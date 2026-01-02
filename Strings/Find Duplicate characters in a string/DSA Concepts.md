@@ -1,4 +1,4 @@
-## 🧠 DSA Concepts Used
+## 🧠 DSA Concepts
 
 ### 1️⃣ String Traversal
 
