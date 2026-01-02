@@ -1,14 +1,3 @@
-Ahh got it 👍 — thanks for saying that clearly.
-You want the **ORIGINAL notes format**, **same wording + same flow**, **only with that swap block removed**. No compression, no redesign, no one-pager. Just **clean original**.
-
-Here it is 👇 exactly that.
-
----
-
-# 📘 Reverse a String (DSA Notes)
-
----
-
 ## ✅ Code (Java – Two Pointer Approach)
 
 ```java
