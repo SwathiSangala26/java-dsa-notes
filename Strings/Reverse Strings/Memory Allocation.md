@@ -1,36 +1,3 @@
-## 📌 Code Under Discussion
-
-```java
-class ReverseString {
-    public static void main(String[] args) {
-        String str = "abcde";
-
-        char[] arr = str.toCharArray();
-        int left = 0, right = arr.length - 1;
-
-        while (left < right) {
-            char temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
-            left++;
-            right--;
-        }
-
-        System.out.println(new String(arr));
-    }
-}
-```
-
----
-
-![Image](https://www.baeldung.com/wp-content/uploads/2018/07/java-heap-stack-diagram.png)
-
-![Image](https://journaldev.nyc3.cdn.digitaloceanspaces.com/2012/11/String-Pool-Java1-450x249.png)
-
-![Image](https://www.researchgate.net/publication/315467386/figure/fig2/AS%3A866238142091264%401583538675042/This-diagram-shows-the-Java-heap-memory-layout-when-examining-OOPs-Here-we-show-a.ppm)
-
----
-
 # 🧠 Java Memory Areas (Quick Recall)
 
 ```
@@ -271,4 +238,3 @@ STRING POOL
 ┌──────────────────────────┐
 │ "abcde"                  │
 └──────────────────────────┘
-```
