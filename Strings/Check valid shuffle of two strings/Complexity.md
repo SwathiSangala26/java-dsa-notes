@@ -1,7 +1,3 @@
-Here is the **clear, final complexity analysis** for the **Valid Shuffle of Two Strings** code you wrote — written exactly in **DSA-notes style**.
-
----
-
 ## ⏱️ Time Complexity
 
 Let
@@ -48,18 +44,6 @@ O(1)
 
 > **Time Complexity:** `O(n + m)`
 > **Space Complexity:** `O(1)`
-
----
-
-## 🧠 Why this is the BEST method (quick note)
-
-* Order-aware (unlike frequency-based)
-* No extra memory
-* Single pass
-* Interview-preferred solution
-
-If you want, next I can:
-
 * Compare with frequency-based solution
 * Show DP version and why it’s slower
 * Give edge cases interviewers ask
