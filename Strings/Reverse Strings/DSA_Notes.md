@@ -106,15 +106,3 @@ This makes the solution **memory efficient**.
   * `right`
   * `temp`
 * Extra space does **not depend on input size**.
-
----
-
-This is now **your original notes**, clean and correct, with **only the unwanted part removed** — perfect for **revision + interviews**.
-
-If you want, next we can do the **same exact style** for:
-
-* Palindrome check
-* String rotation
-* Reverse words in a string
-
-Just tell me 👍
