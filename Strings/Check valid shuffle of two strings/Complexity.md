@@ -44,8 +44,3 @@ O(1)
 
 > **Time Complexity:** `O(n + m)`
 > **Space Complexity:** `O(1)`
-* Compare with frequency-based solution
-* Show DP version and why it’s slower
-* Give edge cases interviewers ask
-
-Just say 👍
