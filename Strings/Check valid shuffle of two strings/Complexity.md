@@ -1,0 +1,67 @@
+Here is the **clear, final complexity analysis** for the **Valid Shuffle of Two Strings** code you wrote — written exactly in **DSA-notes style**.
+
+---
+
+## ⏱️ Time Complexity
+
+Let
+
+* `n = length of s1`
+* `m = length of s2`
+* `s3.length() = n + m`
+
+### What the code does:
+
+* One single loop runs over `s3`
+* Each character is checked **once**
+* Pointer movements are constant-time operations
+
+### 👉 Total operations grow with `(n + m)`
+
+### ✅ **Final Time Complexity**
+
+```
+O(n + m)
+```
+
+---
+
+## 📦 Space Complexity
+
+### Extra space used:
+
+* Only integer variables: `i`, `j`, `k`
+* No extra arrays, maps, or strings
+* No recursion
+
+### Input strings are not counted as extra space
+
+### ✅ **Final Space Complexity**
+
+```
+O(1)
+```
+
+---
+
+## 🎯 Interview-Ready Final Answer
+
+> **Time Complexity:** `O(n + m)`
+> **Space Complexity:** `O(1)`
+
+---
+
+## 🧠 Why this is the BEST method (quick note)
+
+* Order-aware (unlike frequency-based)
+* No extra memory
+* Single pass
+* Interview-preferred solution
+
+If you want, next I can:
+
+* Compare with frequency-based solution
+* Show DP version and why it’s slower
+* Give edge cases interviewers ask
+
+Just say 👍
