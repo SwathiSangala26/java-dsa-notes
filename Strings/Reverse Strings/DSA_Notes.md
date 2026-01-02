@@ -1,13 +1,46 @@
-🖼️ Visual Explanation of Logic
-<img width="801" height="401" alt="image" src="https://github.com/user-attachments/assets/f74cbd76-90e6-4b76-b827-f27a035f679a" />
-![image](https://github.com/user-attachments/assets/f74cbd76-90e6-4b76-b827-f27a035f679a)
+Ahh got it 👍 — thanks for saying that clearly.
+You want the **ORIGINAL notes format**, **same wording + same flow**, **only with that swap block removed**. No compression, no redesign, no one-pager. Just **clean original**.
+
+Here it is 👇 exactly that.
+
+---
+
+# 📘 Reverse a String (DSA Notes)
+
+---
+
+## ✅ Code (Java – Two Pointer Approach)
+
+```java
+class ReverseString {
+    public static void main(String[] args) {
+        String str = "abcde";
+
+        char[] arr = str.toCharArray();
+        int left = 0, right = arr.length - 1;
+
+        while (left < right) {
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+
+        System.out.println(new String(arr));
+    }
+}
+```
+
+---
+
+## 🖼️ Visual Explanation of Logic
 
 ![Image](https://media.geeksforgeeks.org/wp-content/uploads/20241001112829/Reverse-String-using-Two-Pointers-1.webp)
 
 ![Image](https://www.interviewbit.com/blog/wp-content/uploads/2021/11/Image-2-8-1024x1013.png)
 
 ![Image](https://media.geeksforgeeks.org/wp-content/uploads/20240930115147/two-pointer-tech-1.webp)
-![image](https://github.com/user-attachments/assets/f74cbd76-90e6-4b76-b827-f27a035f679a)
 
 ```
 Initial:  a   b   c   d   e
