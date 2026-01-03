@@ -276,5 +276,3 @@ int[] result     (returned to caller)
 ## 🎯 One-Line Interview Explanation
 
 > “The HashMap and result array are allocated in the heap, while loop variables and references live on the stack; entries are stored as nodes with autoboxed Integer keys and values.”
-
-Just say 👍
