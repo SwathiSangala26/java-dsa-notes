@@ -1,168 +1,117 @@
-## ⏱️ TIME COMPLEXITY
+### **Time Complexity:**
 
-### ✅ Definition
+```
+O(n)
+```
 
-> **Time complexity** measures how the running time of an algorithm grows as the input size (`n`) grows.
+### **Space Complexity:**
 
-It **does NOT** measure actual seconds — it measures **growth rate**.
-
----
-
-## 🔹 How to Calculate Time Complexity
-
-### 1️⃣ Count loops (most important)
-
-| Code               | Time  |
-| ------------------ | ----- |
-| One loop over `n`  | O(n)  |
-| Two separate loops | O(n)  |
-| Nested loops       | O(n²) |
-
----
-
-### 2️⃣ Ignore constants
-
-```text
-O(2n) → O(n)
-O(5n + 10) → O(n)
+```
+O(1) auxiliary space (output array excluded)
 ```
 
 ---
 
-### 3️⃣ Focus on worst case
-
-Interviewers almost always want **worst-case time**.
-
----
-
-## 🔹 Common Time Complexities (with examples)
-
-| Complexity | Example              |
-| ---------- | -------------------- |
-| O(1)       | Access array element |
-| O(log n)   | Binary search        |
-| O(n)       | Single loop          |
-| O(n log n) | Merge sort           |
-| O(n²)      | Nested loops         |
-| O(2ⁿ)      | Recursive subsets    |
-
----
-
-## 📌 Example (Your Code)
+# 📌 CODE UNDER ANALYSIS
 
 ```java
-for (int i = 0; i < n; i++) { }      // O(n)
-for (int i = n-1; i >= 0; i--) { }  // O(n)
+public int[] productExceptSelf(int[] nums) {
+
+    int n = nums.length;          // (1)
+    int[] res = new int[n];       // (2)
+
+    res[0] = 1;                   // (3)
+    for (int i = 1; i < n; i++) { // (4)
+        res[i] = res[i - 1] * nums[i - 1];  // (5)
+    }
+
+    int postfix = 1;              // (6)
+    for (int i = n - 1; i >= 0; i--) { // (7)
+        res[i] *= postfix;        // (8)
+        postfix *= nums[i];       // (9)
+    }
+    return res;                   // (10)
+}
 ```
 
-Total:
+---
+
+# ⏱️ WHY TIME COMPLEXITY IS **O(n)**
+
+### Prefix Loop — Lines (4)–(5)
+
+```java
+for (int i = 1; i < n; i++)
+```
+
+* Runs `n − 1` times
+* Constant work per iteration
+  → **O(n)**
+
+---
+
+### Postfix Loop — Lines (7)–(9)
+
+```java
+for (int i = n - 1; i >= 0; i--)
+```
+
+* Runs `n` times
+* Constant work per iteration
+  → **O(n)**
+
+---
+
+### Total Time
 
 ```
 O(n) + O(n) = O(n)
 ```
 
----
-
-# 🧠 SPACE COMPLEXITY
-
----
-
-## ✅ Definition
-
-> **Space complexity** measures how much extra memory an algorithm uses as input size grows.
-
-⚠️ Important:
-
-> **We count auxiliary (extra) space only**
+✔ No nested loops
+✔ Each element processed twice
 
 ---
 
-## 🔹 What is Auxiliary Space?
+# 🧠 WHY SPACE COMPLEXITY IS **O(1)**
 
-| Memory Type             | Counted? |
-| ----------------------- | -------- |
-| Output array (required) | ❌ No     |
-| Helper arrays           | ✅ Yes    |
-| Variables               | ✅ Yes    |
-| Recursion stack         | ✅ Yes    |
-
----
-
-## 🔹 Why Output Array Is Not Counted
-
-If the problem says:
-
-> “Return an array…”
-
-You **must** allocate it.
-
-So interviewers **exclude it** from space complexity.
-
----
-
-## 📌 Example (Your Code)
+### Output Array — Line (2)
 
 ```java
-int[] res = new int[n];   // output → NOT counted
-int postfix = 1;         // extra variable → counted
+int[] res = new int[n];
 ```
 
-### Space Complexity:
+* Required by the problem
+* ❌ Not counted in auxiliary space
+
+---
+
+### Extra Memory Used
+
+```java
+int postfix = 1;   // one variable
+int i              // loop variable
+```
+
+* Constant number of variables
+  → **O(1)** extra space
+
+---
+
+# 🔥 IMPORTANT INTERVIEW LINE (MEMORIZE)
+
+> “The algorithm runs in O(n) time and uses O(1) auxiliary space, excluding the output array.”
+
+---
+
+# 🧾 FINAL NOTES (WRITE THIS IN ONE BOX)
 
 ```
-O(1)
-```
+Product of Array Except Self
 
----
-
-## 🔹 Space Complexity Examples
-
-| Code                      | Space |
-| ------------------------- | ----- |
-| Only variables            | O(1)  |
-| One helper array          | O(n)  |
-| Two helper arrays         | O(n)  |
-| Recursive calls (depth n) | O(n)  |
-
----
-
-## 🧠 Time vs Space (Key Difference)
-
-| Time         | Space                 |
-| ------------ | --------------------- |
-| How fast     | How much memory       |
-| Loops matter | Extra storage matters |
-
----
-
-## 🔥 Interview Traps (VERY IMPORTANT)
-
-### ❓ “Why isn’t this O(n) space? You created an array!”
-
-✅ Answer:
-
-> “The array is the output, so it’s excluded from auxiliary space.”
-
----
-
-### ❓ “If printing is allowed?”
-
-✅ Answer:
-
-> “Then even output isn’t stored, so space is truly O(1).”
-
----
-
-## 🎯 Quick Revision Cheat Sheet
-
-```
 Time Complexity:
-- Count loops
-- Ignore constants
-- Focus on worst case
+O(n) – two linear passes
 
 Space Complexity:
-- Count extra memory
-- Exclude required output
-- Include recursion stack
-```
+O(1) – only constant extra space
+(output array excluded)
