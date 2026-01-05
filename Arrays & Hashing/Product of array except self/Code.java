@@ -34,3 +34,9 @@ public class Solution {
         return res;
     }
 }
+
+Time & Space Complexity
+• Time complexity: O(n)
+• Space complexity:
+    • O(1) extra space.
+    • O(n) space for the output array.
