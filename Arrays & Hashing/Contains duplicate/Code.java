@@ -23,3 +23,7 @@ public class Main {
         System.out.println(result);
     }
 }
+
+Time & Space Complexity
+    • Time complexity: On)
+    • Space complexity: On)
