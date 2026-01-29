@@ -49,3 +49,9 @@ class Solution {
         return res;
     }
 }
+
+Time & Space Complexity
+• Time complexity: O(n2)
+• Space complexity:
+  O(1) or O(n) extra space depending on the sorting algorithm.
+  O(m) space for the output list.
