@@ -1,278 +1,59 @@
-# 📘 Memory Allocation
-
-## 1️⃣ Before Method Call (Heap State)
-
-Assume this call:
-
-```java
-int[] nums = {2, 7, 11, 15};
-int target = 9;
-solution.twoSum(nums, target);
 ```
+STACK
 
-```
+nums    ->  ref
+target  ->  7
+value   ->  ref
+map     ->  ref
+i       ->  int
+diff    ->  int
+
+
 HEAP
---------------------------------
-int[] nums  → [2, 7, 11, 15]
-```
 
----
+int[] nums
+index : 0  1  2  3
+value : 3  4  5  6
 
-## 2️⃣ Method Call → Stack Frame Created
 
-```
-STACK (twoSum frame)
---------------------------------
-nums   -> reference
-target -> 9
-prevMap -> not yet created
-i, num, diff -> not yet created
-```
-
-```
-STACK → HEAP
---------------------------------
-nums --------------------------> int[] [2,7,11,15]
-```
-
----
-
-## 3️⃣ HashMap Creation
-
-```java
-HashMap<Integer, Integer> prevMap = new HashMap<>();
-```
-
-### Memory allocation
-
-```
-STACK
---------------------------------
-prevMap -----------------------> (heap address)
-```
-
-```
-HEAP (Normal Heap)
---------------------------------
-HashMap object
-  |
-  v
-Internal bucket array (initial size)
-```
-
-📌 **Heap objects now**
-
-* `int[] nums`
-* `HashMap prevMap`
-* HashMap’s internal bucket array
-
----
-
-## 4️⃣ Loop Starts (`i = 0`)
-
-```java
-for (int i = 0; i < nums.length; i++)
-```
-
-```
-STACK
---------------------------------
-i = 0
-num, diff -> not yet assigned
-```
-
-* `i` is a primitive → **stack only**
-
----
-
-## 5️⃣ Reading Current Number
-
-```java
-int num = nums[i];
-```
-
-```
-STACK
---------------------------------
-num = 2
-```
-
-* No new heap object
-* Value read from existing array
-
----
-
-## 6️⃣ Compute Complement
-
-```java
-int diff = target - num;
-```
-
-```
-STACK
---------------------------------
-diff = 7
-```
-
-* Pure arithmetic
-* Stack only
-
----
-
-## 7️⃣ HashMap Lookup
-
-```java
-prevMap.containsKey(diff)
-```
-
-```
-HEAP (HashMap)
---------------------------------
+HashMap<Integer, Integer> map
 (empty)
-```
 
-* Map is empty
-* No new memory allocated
 
----
+LOOP i = 0
 
-## 8️⃣ Insert into HashMap
+nums[i] = 3
+diff    = 4
 
-```java
-prevMap.put(num, i);
-```
+map.put(3, 0)
 
-### What happens in memory
 
-```
-HEAP
---------------------------------
-HashMap
-  |
-  v
-Bucket[index] -> Node
-                 |
-                 v
-             key=Integer(2)
-             value=Integer(0)
-```
+HashMap<Integer, Integer> map
+key -> value
+3   -> 0
 
-📌 **Important**
 
-* `int 2` → autoboxed to `Integer(2)`
-* `int 0` → autoboxed to `Integer(0)`
-* A **Node object** is created inside HashMap
+LOOP i = 1
 
----
+nums[i] = 4
+diff    = 3
 
-## 9️⃣ Second Iteration (`i = 1`)
+map.containsKey(3) -> true
 
-```
-STACK
---------------------------------
-i = 1
-num = 7
-diff = 2
-```
 
----
+RETURN
 
-## 🔍 HashMap Lookup (Success Case)
-
-```java
-prevMap.containsKey(2)
-```
-
-```
-HEAP
---------------------------------
-HashMap
-Bucket[x] -> Node(key=2, value=0)
-```
-
-✔ Key found
-
----
-
-## 🔁 Return Statement Memory Allocation
-
-```java
-return new int[] { prevMap.get(diff), i };
-```
-
-### Heap allocation
-
-```
-HEAP
---------------------------------
 int[] result
-[0, 1]
-```
+index : 0  1
+value : 0  1
 
-```
-STACK
---------------------------------
-(reference to result array)
-```
 
-📌 New heap object:
+STACK END
 
-* `int[] {0, 1}`
+references cleared
 
----
 
-## 🔟 Method Ends → Stack Frame Destroyed
-
-```
-STACK
---------------------------------
-(twoSum frame removed)
-```
-
----
-
-## 1️⃣1️⃣ Heap After Method Ends
-
-```
 HEAP
---------------------------------
-int[] nums        (still referenced in main)
-HashMap prevMap  → unreachable → GC eligible
-int[] result     (returned to caller)
+
+objects GC eligible
 ```
-
----
-
-## 🔚 Final Memory Classification (IMPORTANT)
-
-### STACK CONTAINS
-
-* References: `nums`, `prevMap`
-* Primitives: `i`, `num`, `diff`, `target`
-
-### HEAP CONTAINS
-
-* `int[] nums`
-* `HashMap prevMap`
-* HashMap internal bucket array
-* HashMap Node objects
-* Autoboxed `Integer` objects
-* Returned `int[] result`
-
----
-
-## 📝 Notes to Write (Exam / Interview)
-
-* Arrays and objects are stored in **heap**
-* References and primitives are stored in **stack**
-* HashMap stores data as **Node objects**
-* Integers are **autoboxed** when stored in HashMap
-* Memory grows only when inserting into HashMap
-* Stack frame is destroyed after method returns
-* Heap objects become GC-eligible when unreachable
-
----
-
-## 🎯 One-Line Interview Explanation
-
-> “The HashMap and result array are allocated in the heap, while loop variables and references live on the stack; entries are stored as nodes with autoboxed Integer keys and values.”
