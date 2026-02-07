@@ -47,5 +47,5 @@ public class Main {
 }
 
 Time & Space Complexity
-• Time complexity: O(n log k)
-• Space complexity: O(n + k)
+• Time complexity: O(n)
+• Space complexity: O(n)
