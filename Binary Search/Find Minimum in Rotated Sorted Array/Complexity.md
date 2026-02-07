@@ -30,3 +30,5 @@
 * No recursion
 * No stack / map / set used
 * Memory usage does **not depend on input size**
+
+✅ **Space Complexity = O(1)**
